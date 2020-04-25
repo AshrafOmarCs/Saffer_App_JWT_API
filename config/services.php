@@ -33,5 +33,9 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
+    'onesignal' => [
+        'app_id' => env('620f8250-3f37-4793-8110-6908bf3549a5'),
+        'rest_api_key' => env('NmZhZDk4MDMtZTJlZS00YmI4LWJiZDgtMjJmZTkxMGQ0Y2M4')
+    ],
 
 ];

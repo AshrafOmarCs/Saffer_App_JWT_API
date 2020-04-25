@@ -20,5 +20,6 @@ Route::middleware('jwt.auth')->get('users', function () {
 Route::middleware('jwt.auth')->get('test',function(){
     return 'Okay';
 });
-
+Route::post('store','orderController@store');
+Route::post('list','orderController@list');
 Route::get('citys', 'userController@citys');

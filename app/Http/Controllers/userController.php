@@ -11,7 +11,7 @@ class userController extends Controller
 {
     //
     public function reqistration(Request $request){
-        $sql = "insert into users()values()";
+       
         $user = new User;
         $user->name = $request->name;
         $user->phone = $request->phone;
@@ -21,10 +21,16 @@ class userController extends Controller
         $user->password = Hash::make($request->password);
 
         if($user->save()){
-            $data = array('status'=>'True','massage'=>'new Recored has been Inserted');
-            echo json_encode($data);
+            $credentials = request([$request->phone, Hash::make($request->password)]);
+            
+            return response()->json([
+                'token' => $token,
+                'type' => 'bearer', // you can ommit this
+                'expires' => auth('api')->factory()->getTTL() * 60, // time to expiration
+            ]);
+           
         }else{
-            $data = array('status'=>'False','massage'=>'check your Email and Phone it may be Duplicated');
+            $data = array('status'=>'False','massage'=>'Email and Phone it may be Duplicated');
             echo \json_encode($data);
         }
         
